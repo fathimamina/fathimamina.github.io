@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fathima Mina | Portfolio</title>
+    <!-- Modern Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --border: #374151;
+            --hover-border: #9ca3af;
+            --accent: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 32px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Hero / About Combined */
+        .hero {
+            padding: 80px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        .hero-image-wrapper {
+            animation: floatSlow 7s ease-in-out infinite;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -1.5px;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+
+        .hero-content .role {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 32px;
+            color: var(--text-main);
+        }
+
+        .hero-content .about-text {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--text-main);
+            color: var(--bg);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .skill-item::before {
+            content: '—';
+            margin-right: 12px;
+            color: var(--border);
+        }
+
+        /* Grid general */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        /* Resume / Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 600px) {
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+
+        .timeline-date {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .timeline-company {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            border: 1px solid var(--border);
+            padding: 32px;
+            border-radius: 8px;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--hover-border);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        .working-on-badge {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 99px;
+            border: 1px solid var(--hover-border);
+            color: var(--text-main);
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .project-link {
+            color: var(--text-main);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-link {
+            opacity: 1;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 99px;
+        }
+
+        /* Contact */
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-list li a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .contact-list li a:hover {
+            color: var(--text-muted);
+        }
+
+        .contact-list li a::before {
+            content: '↗';
+            margin-right: 12px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .contact-email {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            display: block;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes floatSlow {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">Mina.</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <section class="hero" id="about">
+            <div class="hero-grid">
+                <!-- Left Column -->
+                <div class="hero-sidebar" style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <div class="hero-image-wrapper" style="margin-bottom: 24px; width: 100%;">
+                        <img src="profile.jpg" alt="Fathimathul Mina" class="hero-image"
+                            style="max-width: 320px; margin: 0; width: 100%;">
+                    </div>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 4px; letter-spacing: -1px; line-height: 1.1;">
+                        Fathimathul Mina</h1>
+                    <p class="role" style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 24px;">Machine
+                        Learning Engineer</p>
+                    <div class="btn-group" style="margin-top: 0;">
+                        <a href="#projects" class="btn btn-outline"
+                            style="padding: 10px 24px; font-size: 0.95rem;">Projects</a>
+                        <a href="MinaResume.pdf" class="btn btn-outline" download
+                            style="padding: 10px 24px; font-size: 0.95rem;">CV</a>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="hero-content" style="align-self: center;">
+                    <h2 class="section-title" style="margin-bottom: 24px; font-size: 2rem; letter-spacing: -1px;">About
+                        Me</h2>
+                    <p class="tagline"
+                        style="font-size: 1.25rem; font-weight: 500; color: var(--text-main); margin-bottom: 24px; line-height: 1.4;">
+                        I build intelligent systems to solve real-world problems.
+                    </p>
+
+                    <p class="about-text">
+                        I hold a Master's degree in Computer Science (Specialization in AI) from Govt. College
+                        Thalassery and am an aspiring AI/ML developer from Kozhikode, Kerala. Currently interning at
+                        Brototype, I specialize in building predictive models and intelligent web applications.
+                    </p>
+                    <p class="about-text">
+                        With a strong focus on cutting-edge technologies, I am passionate about problem-solving. I am
+                        constantly expanding my skill set and eager to contribute to impactful projects that turn
+                        theoretical concepts into real-world solutions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Python (AI/ML)</div>
+                <div class="skill-item">Deep Learning & NLP</div>
+                <div class="skill-item">Generative AI & Tuning</div>
+                <div class="skill-item">Computer Vision (OpenCV)</div>
+                <div class="skill-item">Web Dev (Node.js/JS)</div>
+                <div class="skill-item">C, C++, Java</div>
+            </div>
+        </section>
+
+        <section id="resume">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 — Present</div>
+                    <div class="timeline-content">
+                        <h4>AI/ML Intern</h4>
+                        <div class="timeline-company">Brototype</div>
+                        <p class="timeline-desc">Engaging in an intensive, hands-on Machine Learning internship program.
+                            Building real-world predictive models using Python, analyzing complex datasets, and actively
+                            contributing to end-to-end full stack development combined with robust AI implementations.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 — 2025</div>
+                    <div class="timeline-content">
+                        <h4>MSc Computer Science (AI Specialization)</h4>
+                        <div class="timeline-company">Govt. College Thalassery</div>
+                        <p class="timeline-desc">Secured high academic achievements with a deep focus on computer
+                            science fundamentals, algorithm logic, advanced data structures, and state-of-the-art
+                            software engineering methodologies.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 — 2023</div>
+                    <div class="timeline-content">
+                        <h4>BSc Computer Science</h4>
+                        <div class="timeline-company">NAM College Kallikandy</div>
+                        <p class="timeline-desc">Graduated with 74%. Developed a strong foundation in computer science
+                            principles, programming, and software development, sparking an interest in AI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Mini Projects</h2>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Facial Emotion Detection</h3>
+                        <a href="https://github.com/fathimamina/Facial_Emotion_Detection" target="_blank"
+                            class="project-link" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="project-desc">A deep learning model utilizing Computer Vision and Neural Networks to
+                        detect and classify facial emotions accurately in varying environments.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Road Accidents India Prediction</h3>
+                        <a href="https://github.com/fathimamina/Road-Accidents-India-Prediction" target="_blank"
+                            class="project-link" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="project-desc">Predictive modeling and analysis platform focusing on identifying factors
+                        contributing to road accidents in India to help deploy preventive measures.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Data Analytics</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">AgentForge <span class="working-on-badge">Working On</span></h3>
+                        <a href="https://github.com/fathimamina/AgentForge" target="_blank" class="project-link"
+                            aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="project-desc">A modern multi-agent AI platform where specialized AI agents collaborate as
+                        a team to solve complex real-world tasks efficiently.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">AI Agents</span>
+                        <span class="tech-tag">LLMs</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="grid-2">
+                <div>
+                    <p class="about-text">
+                        I am currently open to new internships, job opportunities, and exciting collaborative projects.
+                        Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    </p>
+                    <a href="mailto:fathimathulmina2002@gmail.com"
+                        class="contact-email">fathimathulmina2002@gmail.com</a>
+                    <p class="about-text" style="margin-top: -24px;">+91 9747928918</p>
+                </div>
+                <div>
+                    <ul class="contact-list">
+                        <li><a href="mailto:fathimathulmina2002@gmail.com">Email</a></li>
+                        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Fathima Mina. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
